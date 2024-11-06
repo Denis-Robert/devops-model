@@ -24,7 +24,7 @@ pipeline {
         stage('Run Maven Build Inside Docker') {
             steps {
                 script {
-                    docker.image("${DOCKER_IMAGE}:${DOCKER_TAG}").inside {
+                    docker.image("${DOCKER_IMAGE}:${DOCKER_TAG}").inside ("""--entrypoint=''"""){
                         sh 'mvn clean install'
                     }
                 }
