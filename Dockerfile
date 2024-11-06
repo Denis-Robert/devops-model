@@ -20,4 +20,5 @@ WORKDIR /app
 COPY --from=build /app/target/model-test.jar /app/app.jar
 
 # Run the application when the container starts
-ENTRYPOINT ["java", "-jar", "/app/app.jar","--entrypoint="""]
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+CMD ["--help"]
