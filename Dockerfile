@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Build the application using Maven
-RUN build clean install
+RUN mvn clean install
 
 # Use a smaller base image to run the app
 FROM openjdk:11-jre-slim
