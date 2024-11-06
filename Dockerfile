@@ -17,7 +17,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy the built jar file from the build container
-COPY --from=build /app/target/simple-java-maven-1.0-SNAPSHOT.jar /app/app.jar
+COPY --from=build /app/target/model-1.0-SNAPSHOT.jar /app/app.jar
 
 # Run the application when the container starts
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
