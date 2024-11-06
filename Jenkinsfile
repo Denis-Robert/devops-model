@@ -24,8 +24,14 @@ pipeline {
         stage('Run Maven Build Inside Docker') {
             steps {
                 script {
-                    docker.image("${DOCKER_IMAGE}:${DOCKER_TAG}").inside ("""--entrypoint=''"""){
-                        sh 'mvn clean install'
+                    def cmd = """
+                    docker run -t -d --entrypoint="" devops-lab:latest bash -c "
+                        apt-get update &&
+                        apt-get install -y maven &&
+                        mvn clean install"
+                    """
+                    echo "Running command: ${cmd}"
+                    sh cmd
                     }
                 }
             }
